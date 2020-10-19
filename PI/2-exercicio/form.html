@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Cadástro Imóvel</h1>
+    <form action="registraVenda.php">
+        <fieldset>
+        <legend>Informações Gerais:</legend>
+        Tipo de imóvel:
+        <select name="tipo-imóvel">
+         <option value="casa">casa</option>
+         <option value="apartamento" selected>apartamento</option>
+         <option value="cobertura">cobertura</option>
+        </select> <br><br>
+        Data de construção:<input type="date" name="data"> <br> <br>
+        <input type="radio" name="novo"/> Imóvel Novo
+        <input type="radio" name="velho"/> Imível Usado:
+        <br><br>
+        <label for="end">Endereço:</label> <br />
+        <input type="text" name="endereco" id="end" />
+        <br><br>
+        <label for="deion">Descrição:</label> <br />
+        <textarea name="descricao" id="deion" cols="40" rows="5"></textarea>
+ 
+        </fieldset>
+        <br>
+       
+        <fieldset>
+        <legend>Outras Características</legend>
+            <table>
+                <tr>
+                    <td>
+                        <input type="checkbox" name="piscina" /> Piscina 
+                      
+                     </td>
+                     <td>
+                        <input type="checkbox" name="banheira" /> Banheira de hidromassagem
+                     </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" name="aquecedorsolar" /> Aquecedor Solar 
+                        
+                    </td>
+                    <td>
+                        <input type="checkbox" name="lavabo" /> Lavabo
+                    </td>
+                </tr>
+                 
+                <tr>
+                    <td>
+                        <input type="checkbox" name="churrasqueira" /> Churrasqueira 
+                    </td>
+                    <td>
+                        <input type="checkbox" name="aquecedor" /> Aquecedor
+                    </td>
+                </tr>
+                    <td>
+                        <input type="checkbox" name="closet" /> Closet 
+                         
+                    </td>
+                    <td>
+                        <input type="checkbox" name="armarios" /> Amários
+                    </td>
+                </tr>
+            </table>
+           
+            
+        </fieldset>
+        <br><br>
+        <button>Cadastrar</button>
+        <button>Limpar</button>
+
+
+
+       </form>
+</body>
+</html>

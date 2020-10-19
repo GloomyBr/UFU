@@ -1,0 +1,21 @@
+int aolf [ 22 ] ;
+
+programa
+    inicio
+        se ( a >= b ) or ( a < b )  or ( a == b )
+            skin + doi 
+        entao
+            skol - o3as
+    fim
+
+se s
+    faca 
+        ( troi / skoll ) + cha54a * pol
+entao 
+    return troi + pol
+
+faca
+    bloco
+enquanto ( condicao ) ; 
+
+
