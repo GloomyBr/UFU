@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário</title>
+    <style>
+        input[type=text]{
+            display: block;
+            margin: 8px 0 15px;
+            padding: 8px;
+            width: 70%;
+            border: 0.5px solid #888;
+            border-radius: 4px;
+        }
+
+        input[type=number]{
+            display: block;
+            margin: 8px 0 15px;
+            padding: 8px;
+            width: 70%;
+            border: 0.5px solid #888;
+            border-radius: 4px;
+        }
+
+        input[type=date]{
+            display: block;
+            margin: 8px 0 15px;
+            padding: 8px;
+            width: 70%;
+            border: 0.5px solid #888;
+            border-radius: 4px;
+        }
+
+        select{
+            display: block;
+            margin: 8px 0 15px;
+            padding: 8px;
+            width: 70%;
+            border: 0.5px solid #888;
+            border-radius: 4px;
+        }
+
+        textarea{
+            display: block;
+            margin: 8px 0 15px;
+            padding: 8px;
+            width: 96%;
+            border: 0.5px solid #888;
+            border-radius: 4px;
+        }
+
+        input[type=tel]{
+            display: block;
+            margin: 8px 0 15px;
+            padding: 8px;
+            width: 70%;
+            border: 0.5px solid #888;
+            border-radius: 4px;
+        }
+
+        input[type=email]{
+            display: block;
+            margin: 8px 0 15px;
+            padding: 8px;
+            width: 70%;
+            border: 0.5px solid #888;
+            border-radius: 4px;
+        }
+
+
+        input:focus{
+            border: 0.5px solid #6251ff;
+            box-shadow: 0px 0px 5px #6251ff;
+            outline: none; 
+        }
+
+        input::placeholder{
+            color: red;
+            font-size: 12px;
+        }
+
+        input:invalid + span::after{
+            content: '✖';
+            color: red;
+        }
+
+        input:valid + span::after{
+            content: '✔';
+            color: limegreen;
+        }
+
+        .check{
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        span{
+            position: absolute;
+            left: 75%;
+            top: 25%;
+        }
+
+        select:focus{
+            border: 0.5px solid #6251ff;
+            box-shadow: 0px 0px 5px #6251ff;
+            outline: none; 
+        }
+
+        textarea:focus{
+            border: 0.5px solid #6251ff;
+            box-shadow: 0px 0px 5px #6251ff;
+            outline: none; 
+        }
+
+        body{
+            margin: 0 auto;
+            background-color: #ddd;
+            color: black;
+            display: flex;
+            justify-content: center;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            line-height: 1.5rem;
+        }
+
+        fieldset{
+            border: 0.8px solid #666;
+            border-radius: 8px;
+        }
+
+        .outro{
+            display: flex;
+            flex-direction: column;
+            justify-content: left;
+        }
+
+        .button{
+            margin-top: 10px;
+            width: 50px;
+            border: none;
+            padding: 10px;
+            background-color:#6251ff;
+            border-radius: 8px;
+            color: #fff;
+
+        }
+
+        .button:hover{
+            background-color:#3c27fa;
+            cursor: pointer;
+            color: #fff;
+            transition: 0.3s;
+        }
+
+
+        .nava {
+            color: #fff;
+            text-decoration: none;
+            font-size: 17px;
+        }
+
+        button{
+            margin-top: 10px;
+            width: max-content;
+            border: none;
+            padding: 10px 20px;
+            background-color:#6251ff;
+            border-radius: 8px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 17px;
+
+        }
+
+        button:hover{
+            background-color:#3c27fa;
+            cursor: pointer;
+            color: #fff;
+        }  
+
+        .buttons{
+            display: flex;
+            text-align: center;
+            justify-content: space-around;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <form method="get">
+            <fieldset>
+                <legend><h1>Dados Pessoais</h1></legend>
+                <div>
+                    <label for="nome">Nome:</label>
+                    <div class="check">
+                        <input type="text" id="nome" name="nome" minlength="6" placeholder="Mínimo de 6 caracteres" required>
+                        <span></span>
+                    </div>
+
+                </div>
+
+                <div>
+                    <label for="email">E-mail:</label>
+                    <div class="check">
+                        <input type="email" id="email" placeholder="Digite um e-mail válido" name="email" required>
+                        <span></span>
+                    </div>
+
+                </div>
+
+                <div>
+                    <label for="idade">Idade:</label>
+                    <div class="check">
+                        <input type="number" placeholder="Digite um número" id="idade" name="idade" required>
+                        <span></span>
+                    </div>
+                </div>
+
+                <div>
+                    <label for="telefone">Telefone:</label>
+                    <input type="tel" id="telefone" name="telefone">
+                </div>
+
+                <div>
+                    <label for="nascimento">Data de nascimento:</label>
+                    <div class="check">
+                        <input type="date" id="nascimento" name="nascimento" required>
+                        <span></span>
+                    </div>
+                   
+                </div>
+
+            </fieldset>
+            
+            <fieldset>
+                <legend><h1>Dados da Empresa</h1></legend>
+                
+                <div>
+                    <label for="cnpj">CNPJ:</label>
+                    <input type="text" id="cnpj" name="cnpj">
+                </div>
+
+                <div>
+                    <label for="razao">Razão Social:</label>
+                    <input type="text" id="razao" name="razao">
+                </div>
+
+                <div>
+                    <label for="ramo">Ramo de atuação:</label>
+                    <input type="text" id="ramo" name="ramo">
+                </div>
+
+
+            </fieldset>
+            
+            <fieldset>
+                <legend> <h1>Endereço</h1></legend>
+               
+                <div>
+                    <label for="cep">CEP:</label>
+                    <input type="text" id="cep" name="cep">
+                </div>
+
+                <div>
+                    <label for="tipo">Tipo de logradouro:</label>
+                    <select name="tipo" id="tipo">
+                        <option value="rua">Rua</option>
+                        <option value="avenida">Avenida</option>
+                        <option value="praca">Praça</option>
+                        <option value="condominio">Condomínio</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="logradouro">Logradouro:</label>
+                    <input type="text" id="logradouro" name="logradouro">
+                </div>
+
+                <div>
+                    <label for="cidade">Cidade:</label>
+                    <input type="text" id="cidade" name="cidade">
+                </div>
+
+                <div>
+                    <label for="estado">Estado:</label>
+                    <input type="text" id="estado" name="estado">
+                </div>
+
+            </fieldset>
+            
+            <fieldset>
+                <legend><h1>Descrição detalhada do interesse</h1></legend>
+                
+                <textarea name="description" id="description" cols="50" rows="10" placeholder="Descreva aqui"></textarea>
+
+            </fieldset>
+
+            <fieldset class="outro">
+                <legend><h1>Outro</h1></legend>
+                <div>
+                    <label for="horas">Serviço cobrado por horas:</label>
+                    <input type="checkbox" id="horas" name="horas">
+                </div>
+                <div>
+                    <label for="recrute">Recrutamento para empresa:</label>
+                    <input type="checkbox" id="recrute" name="recrute">
+                </div>
+                <div>
+                    <label for="duvida">Dúvidas sobre a área dos dados:</label>
+                    <input type="checkbox" id="duvida" name="duvida">
+                </div>
+                <div>
+                    <label for="mentoria">Mentoria sobre dados:</label>
+                    <input type="checkbox" id="mentoria" name="mentoria">
+                </div>
+                <div> 
+                    <label for="empreito">Serviço por empreito:</label>
+                    <input type="radio" id="empreito" name="empreito">
+                </div>
+                <div>
+                    <label for="aula">Aula sobre dados:</label>
+                    <input type="radio" id="aula" name="aula">
+                </div>
+                <div>
+                    <label for="info">Informações para ingressar na carreira:</label>
+                    <input type="radio" id="info" name="info">
+                </div>
+            </fieldset>
+            
+            <div class="buttons">
+                <div class="button"><a class="nava" href="index.html">Voltar</a></div>
+                <button>Enviar</button>
+            </div>
+
+        </form>
+    </div>
+</body>
+</html>

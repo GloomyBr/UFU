@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hidden</title>
+    <style>
+        article {
+            padding: 5px 15px;
+            float: left;
+            width: 200px;
+            height: 200px;
+            margin: 5px;
+            border: 1px solid lightgray;
+            background-color: #f5f5f5;
+            box-shadow:  0px 0px 4px rgb(110, 187, 212);
+        }
+    </style>
+</head>
+<body>
+
+    <main>
+        <article><h2>A</h2></article>
+        <article><h2>B</h2></article>
+        <article><h2>C</h2></article>
+        <article><h2>D</h2></article>
+        <article><h2>E</h2></article>
+        <article><h2>F</h2></article>
+        <article><h2>G</h2></article>
+    </main>
+    
+    <script>
+        window.onload = function () { // executa essa função toda vez que a página for carregada ou recarrega.
+            const artigos = document.querySelectorAll('article'); // incorpora todos os elementos do tipo 'article' em um array.
+            for (let artigo of artigos) { // for para percorrer o array de artigos ('articles')
+                artigo.onclick = () => artigo.style.visibility = 'hidden' // atribui uma função à ação de clicar do artigo,
+                // quando o quadrante que o artigo envolve for clicado, será atribuido a visbilidade do artigo o valor 'hidden', 
+                //fazendo com que desapareça ou 'esconda'.
+            }
+        }
+    </script>
+</body>
+</html>

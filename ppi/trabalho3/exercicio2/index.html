@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio2</title>
+
+    <style>
+        body{
+            margin: 0 auto;
+            font-size: 24px;
+        }
+
+        input {
+            border: 0.5px solid rgb(146, 146, 146);
+            padding: 2px;
+        }
+        main {
+            margin: 0 auto;
+            background-color: #f5f5f5;
+            width: 20rem;
+            height: max-content;
+            padding: 2% 4%;
+            border-radius: 3px;
+             position: absolute; 
+             left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%); 
+            display: flex;
+            justify-content: center;
+            vertical-align: center;
+            flex-direction: column;
+            align-items: center;
+            border: 0.5px solid rgb(180, 180, 180);
+        }
+        li {
+            padding: 5px 10px 5px 20px;
+            width: 230px;
+            margin: 3px;
+            background-color: rgb(189, 217, 240);
+            border: 0.5px solid rgb(70, 67, 212);
+            border-radius: 3px;
+        }
+        li > button {
+            font-size: smaller;
+            float: right;
+            color: red;
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+
+    <main>
+        <div>
+            <label for="interesse">Interesse:</label>
+            <input type="text" id="interesse" name='interesse'>
+        </div>
+
+        <ol>
+        </ol>
+    </main>
+
+    <script>
+        window.onload = function () { //adiciona uma função ao evento de load da página, toda vez que carregar ou recarregar a página a função é ativada.
+            const campoInteresse = document.querySelector('#interesse'); // seleciona o elemento com id 'interesse', nesse caso o input.
+            campoInteresse.addEventListener('keyup', e => { // adiciona um evento ao input para quando a tecla for clicada.
+                if (e.key === 'Enter') //se a tecla que for clicada for 'Enter' chama a função adicionaInteresse(), caso contrário não faz nada.
+                    adicionaInteresse();
+            })
+        }
+
+        function adicionaInteresse() {
+            const campoInteresse = document.querySelector('#interesse'); // seleciona elementoo input com id 'interesse' e guarda na constante campoInteresse.
+            const listaInteresses = document.querySelector('ol'); // seleciona o elemento do tipo lista ordenada com a tag 'ol' e guarda na constante listaInteresses.
+
+            const novoLi = document.createElement('li'); //cria um elemento do tipo 'li'.
+            const novoSpan = document.createElement('span'); //cria um elemento do tipo 'span'.
+            const novoBotao = document.createElement('button'); //cria um elemento do tipo 'button'.
+
+            novoSpan.textContent = campoInteresse.value; //atribui o valor que é inserido no input para o contexto de texto do 'span' criado.
+            novoBotao.textContent = '✖'; //atribui ao valor de contexto de texto do botão criado o ícone '✖'.
+
+            novoLi.appendChild(novoSpan); //adiciona o 'span' para dentro do 'li' criado, fazendo com que o 'span' torne-se filho do 'li'.
+            novoLi.appendChild(novoBotao); //adiciona o 'button' criado como filho de 'li', fazendo com que vá para dentro do 'li'.
+            listaInteresses.appendChild(novoLi); //adiciona o 'li' como filho de 'ol', azendo com que 'li' vá para dentro de 'ol'.
+
+            // Essa função remove o filho 'li' da lista assim que clica no botão '✖'.
+            novoBotao.onclick = function () { //adiciona uma função ao evento de clickar do 'button' criado.
+                listaInteresses.removeChild(novoLi); //remove o filho passado por parâmetro.
+            }
+
+            campoInteresse.value = '' //reseta o valor do input para vazio.
+        }
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-CuOF+2SnTUfTwSZjCXf01h7uYhfOBuxIhGKPbfEJ3+FqH/s6cIFN9bGr1HmAg4fQ" crossorigin="anonymous">
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <title>Agendamento</title>
+
+  <style>
+    html {
+      height: 100%;
+      position: relative;
+    }
+
+    body {
+      margin: 0;
+      background-color: #fff;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      line-height: 1.5rem;
+      position: relative;
+      min-height: 100vh;
+    }
+    
+    a {
+      text-decoration: none;
+    }
+
+    .container {
+      padding-top: 1rem;
+      padding-bottom: 4.5rem;
+    }
+
+    footer {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <header class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 bg-white border-bottom shadow-sm">
+    <img src="./images/logo.png" alt="logo" width="50">
+    <p class="h5 my-0 mr-md-auto fw-normal">Clínica Lawrence</p>
+    <nav class="my-2 my-md-0 mr-md-3">
+      <a class="p-2 text-dark" href="index.html">Home</a>
+      <a class="p-2 text-dark" href="galeria.html">Galeria</a>
+      <a class="p-2 text-dark" href="endereco.html">Novo Endereço</a>
+      <a class="p-2 text-blue" href="agendamento.html">Agendamento</a>
+    </nav>
+    <a class="btn btn-outline-primary" href="login.html">Login</a>
+  </header>
+  
+  <div class="container mt-5">
+    <form method="POST" class="row g-3">
+      <div class="form-floating col-sm-3">
+        <select name="especialidade" id="especialidade" class="form-select">
+            <option selected>Sel.</option>
+        </select>
+        <label for="especialidade">Especialidade médica desejada</label>
+      </div>
+
+      <div class="form-floating col-sm-3">
+        <select name="nome_medico" id="nome_medico" class="form-select">
+            <option selected>Sel.</option>
+        </select>
+        <label for="nome_medico">Nome do médico especialista</label>
+      </div>
+
+      <div class="form-floating col-sm-3">
+        <input type="date" class="form-control" name="date" id="date" placeholder="Data da Consulta">
+        <label for="date" class="form-label">Data da Consulta</label>
+      </div>
+
+      <div class="form-floating col-sm-3">
+        <select name="disponivel" id="disponivel" class="form-select">
+            <option selected>Sel.</option>
+            <option id="h-08:00:00" value="08:00">8</option>
+            <option id="h-09:00:00" value="09:00">9</option>
+            <option id="h-10:00:00" value="10:00">10</option>
+            <option id="h-11:00:00" value="11:00">11</option>
+            <option id="h-12:00:00" value="12:00">12</option>
+            <option id="h-13:00:00" value="13:00">13</option>
+            <option id="h-14:00:00" value="14:00">14</option>
+            <option id="h-15:00:00" value="15:00">15</option>
+            <option id="h-16:00:00" value="16:00">16</option>
+            <option id="h-17:00:00" value="17:00">17</option>
+        </select>
+        <label for="disponivel">Horário disponível</label>
+      </div>
+
+      <div class="form-floating col-sm-4">
+        <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome">
+        <label for="nome" class="form-label">Nome</label>
+      </div>
+      <div class="form-floating col-sm-4">
+        <input type="email" class="form-control" name="email" id="email" placeholder="Email">
+        <label for="email" class="form-label">Email</label>
+      </div>
+    
+      <div class="form-floating col-sm-4">
+        <input type="tel" class="form-control" name="telefone" id="telefone" placeholder="Telefone">
+        <label for="telefone" class="form-label">Telefone</label>
+      </div>
+
+      <div class="col-12">
+        <button type="submit" class="btn btn-primary">
+          Cadastrar
+        </button>
+      </div>
+    </form>
+  </div>
+
+
+  <footer  class="footer mt-auto py-3 bg-light text-center">
+    <p>&copy; 2020 Company, Inc.</p>
+  </footer>
+
+  <script>
+    window.onload = () => {
+      const selectEspecialidade = document.getElementById('especialidade');
+      const selectMedico = document.getElementById('nome_medico');
+      const selectHoras = document.getElementById('disponivel');
+
+      function habilitaHoras() {
+        const options = selectHoras.childNodes;
+
+        options.forEach(option => {
+          option.disabled = false;
+        })
+      }
+
+      function limpaMedicos() {
+        const medicos = selectMedico.childNodes;
+
+        medicos.forEach(medico => {
+          if(medico.textContent != "Sel.") {
+            medico.selected = false;
+            selectMedico.removeChild(medico);
+          }
+        })
+      }
+
+      function limpaHoras() {
+        const horas = selectHoras.childNodes;
+
+        horas.forEach(hora => {
+          if(hora.textContent == "Sel.") {
+            hora.selected = true;
+          } else {
+            hora.selected = false;
+          }
+        })
+      }
+
+      selectEspecialidade.addEventListener('change', e => {
+        limpaMedicos();
+        limpaHoras();
+        habilitaHoras();
+        $.ajax({
+          type: 'GET',
+          url: 'listar_nome_medico.php',
+          data: {especialidade: e.target.value},
+          success: res => {
+            response = JSON.parse(res);
+            if(Object.keys(response).length > 0) {
+              response['medicos'].forEach(medico => {
+                const option = document.createElement("option");
+                option.text = medico;
+                option.value = medico;
+                selectMedico.appendChild(option);
+              });
+            }
+          }
+        })
+      })
+
+      selectMedico.addEventListener('change', e => {
+        habilitaHoras();
+        limpaHoras();
+        $.ajax({
+          type: 'GET',
+          url: 'agendamentos_medicos.php',
+          data: {nome_medico: e.target.value},
+          success: res => {
+            response = JSON.parse(res);
+            if(Object.keys(response).length > 0) {
+              response['horarios'].forEach(horario => {
+                document.getElementById(`h-${horario}`).disabled = true;
+              });
+            }
+          }
+        })
+      })
+
+      $.ajax({
+        type: 'GET',
+        url: 'listar_especialidade.php',
+        success: res => {
+          response = JSON.parse(res);
+          if(Object.keys(response).length > 0) {
+            response['especialidades'].forEach(especialidade => {
+              const option = document.createElement("option");
+              option.text = especialidade;
+              option.value = especialidade;
+              selectEspecialidade.appendChild(option);
+            });
+          }
+        }
+      })
+
+      $('form').on('submit', (e) => {
+        e.preventDefault();
+        $.ajax({
+          type: 'POST',
+          url: 'cadastro_agendamento.php',
+          data: $('form').serialize(),
+          success: res => {
+            res = JSON.parse(res);
+            alert(res['response']);
+            $("input").val("");
+            $("select").val("Sel.");
+            habilitaHoras();
+            limpaMedicos();
+          }
+        })
+      })
+    }
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-popRpmFF9JQgExhfw5tZT4I9/CI5e2QcuUZPOVXb1m7qUmeR2b50u+YFEYe1wgzy" crossorigin="anonymous"></script>
+</body>
+</html>
